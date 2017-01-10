@@ -3,6 +3,9 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import './app.scss';
 
+//Compoments
+//import Scoreboard from './components/Scoreboard';
+
 var PLAYERS = [
   {
     name: "Kyle Lange",
