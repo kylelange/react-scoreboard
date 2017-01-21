@@ -24,12 +24,33 @@ var PLAYERS = [
   },
 ];
 
-var AddPlayerForm = React.createClass ({
+var AddPlayerForm = React.createClass({
+  propTypes: {
+    onAdd: React.PropTypes.func.isRequired,
+  },
+
+  getInitialState: function() {
+    return {
+      name: "",
+    };
+  },
+
+  onNameChange: function(event) {
+    console.log('onNameChange', event.target.value);
+    this.setState({name: event.target.value});
+  },
+
+  onSubmit: function(event) {
+    event.preventDefault();
+
+    //this.props.onAdd()
+  },
+
   render: function() {
     return (
       <div className="add-player-form">
-        <form >
-          <input type="text" />
+        <form onSubmit={this.onSubmit}>
+          <input type="text" value={this.state.name} onChange={this.onNameChange} />
           <input type="submit" value="Add Player"/>
         </form>
       </div>
