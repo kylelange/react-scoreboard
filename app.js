@@ -9,20 +9,22 @@ import './app.scss';
 var PLAYERS = [
   {
     name: "Jim Hoskins",
-    score: 31,
+    score: 11,
     id: 1,
   },
   {
     name: "Andrew Chalkley",
-    score: 35,
+    score: 15,
     id: 2,
   },
   {
     name: "Alena Holligan",
-    score: 42,
+    score: 12,
     id: 3,
   },
 ];
+
+var nextId = 4;
 
 var AddPlayerForm = React.createClass({
   propTypes: {
@@ -36,14 +38,15 @@ var AddPlayerForm = React.createClass({
   },
 
   onNameChange: function(event) {
-    console.log('onNameChange', event.target.value);
+    //console.log('onNameChange', event.target.value);
     this.setState({name: event.target.value});
   },
 
   onSubmit: function(event) {
     event.preventDefault();
 
-    //this.props.onAdd()
+    this.props.onAdd(this.state.name)
+    this.setState({name: ""});
   },
 
   render: function() {
@@ -161,6 +164,17 @@ var Application = React.createClass({
     this.setState(this.state);
   },
 
+  onPlayerAdd: function(name) {
+    console.log('Player Added:', name);
+    this.state.players.push({
+      name: name,
+      score: 0,
+      id: nextId,
+    });
+    this.setState(this.state);
+    nextId += 1;
+  },
+
   render: function() {
     return (
       <div className="scoreboard">
@@ -180,7 +194,7 @@ var Application = React.createClass({
             );
           }.bind(this))}
         </div>
-        <AddPlayerForm />
+        <AddPlayerForm onAdd={this.onPlayerAdd} />
       </div>
     );
   }
