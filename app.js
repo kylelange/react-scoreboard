@@ -8,17 +8,17 @@ import './app.scss';
 
 var PLAYERS = [
   {
-    name: "Jim Hoskins",
+    name: "Kyle Lange",
     score: 11,
     id: 1,
   },
   {
-    name: "Andrew Chalkley",
+    name: "Arlo Rune",
     score: 15,
     id: 2,
   },
   {
-    name: "Alena Holligan",
+    name: "Karen Waffles",
     score: 12,
     id: 3,
   },
